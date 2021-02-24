@@ -1,4 +1,4 @@
-# Express Typescript & Mysql
+# REST API Express Typescript & Mysql
 
 🚢[Docker Image](https://hub.docker.com/repository/docker/rootduck/express-api)
 
@@ -31,6 +31,8 @@
     Developer Mode :
     $ npm run dev 
     ```
+### Documentation API
+``http://localhost:8000/docs/``
 
 ### Licence
 
