@@ -1,10 +1,14 @@
 import { getRepository } from "typeorm";
-import { User } from "../models";
+import { User, Response } from "../models";
 
 export interface IUserPayload {
   firstName: string;
   lastName: string;
   email: string;
+}
+
+export interface IResponse {
+  message: string;
 }
 
 export const getUsers = async (): Promise<Array<User>> => {
@@ -24,6 +28,27 @@ export const createUser = async (payload: IUserPayload): Promise<User> => {
 export const getUser = async (id: number): Promise<User | null> => {
   const userRepository = getRepository(User);
   const user = await userRepository.findOne({ id: id });
+  if (!user) return null;
+  return user;
+};
+
+export const updateUser = async (id: number, payload: IUserPayload): Promise<User | null> => {
+  const userRepository = getRepository(User);
+  const user = new User();
+  user.firstName = payload.firstName;
+  user.lastName = payload.lastName;
+  await userRepository.update(
+    { id: id },
+    user,
+  )
+  if (!user) return null;
+  return user;
+};
+
+export const deleteUser = async (id: number): Promise<User | null> => {
+  const userRepository = getRepository(User);
+  const user = new User();
+  await userRepository.delete({ id: id });
   if (!user) return null;
   return user;
 };

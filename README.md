@@ -9,10 +9,13 @@
 - Swagger
 
 ### Installation
+
+#### Manual
 1. Clone this project.
    
     ```sh
     $ git clone https://github.com/skyapps-id/Express-Typescript-Mysql.git 
+    $ cd Express-Typescript-Mysql/
     ```
 
 2. Install Dependency
@@ -31,6 +34,22 @@
     Developer Mode :
     $ npm run dev 
     ```
+#### Docker
+1. Clone this project.
+   
+    ```sh
+    $ git clone https://github.com/skyapps-id/Express-Typescript-Mysql.git 
+    $ cd Express-Typescript-Mysql/
+    ```
+2. Docker Depeloyment
+
+    ```sh
+    $ docker-compose -f  docker-compose-mysql.yml up
+    ```
+#### Kubernetes
+- Next Chapter
+
+
 ### Documentation API
 ``http://localhost:8000/docs/``
 

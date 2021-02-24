@@ -22,4 +22,16 @@ router.get("/:id", async (req, res) => {
   return res.send(response);
 });
 
+router.put("/:id", async (req, res) => {
+  const controller = new UserController();
+  const response = await controller.updateUser(req.params.id, req.body);
+  return res.send(response);
+});
+
+router.delete("/:id", async (req, res) => {
+  const controller = new UserController();
+  const response = await controller.deleteUser(req.params.id);
+  return res.send(response);
+});
+
 export default router;

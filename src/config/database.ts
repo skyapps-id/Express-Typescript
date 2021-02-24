@@ -1,13 +1,16 @@
+import dotenv  from "dotenv";
 import { ConnectionOptions } from "typeorm";
 import { User, Post, Comment } from '../models'
 
+dotenv.config();
+
 const config: ConnectionOptions = {
   type: "mysql",
-  host: process.env.POSTGRES_HOST || "192.168.100.80",
-  port: Number(process.env.POSTGRES_PORT) || 3306,
-  username: process.env.POSTGRES_USER || "mysqluser",
-  password: process.env.POSTGRES_PASSWORD || "",
-  database: process.env.POSTGRES_DB || "express-typescript",
+  host: process.env.DB_HOST || "localhost",
+  port: Number(process.env.DB_PORT) || 3306,
+  username: process.env.DB_USER || "none",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "none",
   entities: [User, Post, Comment],
   synchronize: true,
 };
