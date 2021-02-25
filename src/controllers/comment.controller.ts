@@ -1,16 +1,18 @@
-import { Get, Route, Tags, Post, Body, Path } from "tsoa";
+import { Get, Route, Tags, Post, Put, Delete, Body, Path } from "tsoa";
 import { Comment } from "../models";
 import {
   getComments,
   ICommentPayload,
   createComment,
   getComment,
+  updateComment,
+  deleteComment,
 } from "../repositories/comment.repository";
 
 @Route("comments")
 @Tags("Comment")
 export default class CommentController {
-  @Get("/")
+  @Get()
   public async getComments(): Promise<Array<Comment>> {
     return getComments();
   }
@@ -23,5 +25,15 @@ export default class CommentController {
   @Get("/:id")
   public async getComment(@Path() id: string): Promise<Comment | null> {
     return getComment(Number(id));
+  }
+
+  @Put("/:id")
+  public async updateComment(@Path() id: string, @Body() body: ICommentPayload): Promise<Comment | null> {
+    return updateComment(Number(id), body);
+  }
+
+  @Delete("/:id")
+  public async deleteComment(@Path() id: string): Promise<Comment | null> {
+    return deleteComment(Number(id));
   }
 }

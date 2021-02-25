@@ -37,4 +37,6 @@ export class Comment {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  message: String;
 }

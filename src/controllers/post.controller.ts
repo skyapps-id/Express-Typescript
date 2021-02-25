@@ -1,16 +1,18 @@
-import { Get, Route, Tags, Post as PostMethod, Body, Path } from "tsoa";
+import { Get, Route, Tags, Post as PostMethod, Put, Delete, Body, Path } from "tsoa";
 import { Post } from "../models";
 import {
   createPost,
   getPosts,
   IPostPayload,
   getPost,
+  updatePost,
+  deletePost,
 } from "../repositories/post.repository";
 
 @Route("posts")
 @Tags("Post")
 export default class PostController {
-  @Get("/")
+  @Get("")
   public async getPosts(): Promise<Array<Post>> {
     return getPosts();
   }
@@ -23,5 +25,15 @@ export default class PostController {
   @Get("/:id")
   public async getPost(@Path() id: string): Promise<Post | null> {
     return getPost(Number(id));
+  }
+
+  @Put("/:id")
+  public async updatePost(@Path() id: string, @Body() body: IPostPayload): Promise<Post | null> {
+    return updatePost(Number(id), body);
+  }
+
+  @Delete("/:id")
+  public async deletePost(@Path() id: string): Promise<Post | null> {
+    return deletePost(Number(id));
   }
 }

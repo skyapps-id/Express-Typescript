@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { User, Response } from "../models";
+import { User } from "../models";
 
 export interface IUserPayload {
   firstName: string;
@@ -34,7 +34,8 @@ export const getUser = async (id: number): Promise<User | null> => {
 
 export const updateUser = async (id: number, payload: IUserPayload): Promise<User | null> => {
   const userRepository = getRepository(User);
-  const user = new User();
+  const user = await userRepository.findOne({ id: id });
+  if (!user) return null;
   user.firstName = payload.firstName;
   user.lastName = payload.lastName;
   await userRepository.update(
@@ -47,8 +48,8 @@ export const updateUser = async (id: number, payload: IUserPayload): Promise<Use
 
 export const deleteUser = async (id: number): Promise<User | null> => {
   const userRepository = getRepository(User);
-  const user = new User();
-  await userRepository.delete({ id: id });
+  const user = await userRepository.findOne({ id: id });
   if (!user) return null;
+  await userRepository.delete({ id: id });
   return user;
 };

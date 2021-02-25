@@ -38,4 +38,6 @@ export class Post {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  message: String;
 }

@@ -12,7 +12,7 @@ import {
 @Route("users")
 @Tags("User")
 export default class UserController {
-  @Get("/")
+  @Get()
   public async getUsers(): Promise<Array<User>> {
     return getUsers();
   }
