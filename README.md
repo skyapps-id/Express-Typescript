@@ -6,7 +6,9 @@
 - Express
 - Typescript
 - TypeORM
-- Swagger
+- Joi Validator
+- Chai & Mocha Tesing
+- Swagger Documentation API
 
 ### Installation
 
@@ -27,12 +29,15 @@
 3. Run Project
    
     ```sh
-    Depeloyment Mode :
+    Depeloyment :
     $ npm run build
     $ npm run start
 
-    Developer Mode :
-    $ npm run dev 
+    Developer :
+    $ npm run dev
+
+    Testing :
+    $ npm run test 
     ```
 #### Docker
 1. Clone this project.

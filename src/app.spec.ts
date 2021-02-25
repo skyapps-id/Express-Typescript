@@ -5,15 +5,30 @@ import chaiHttp from "chai-http";
 import "mocha";
 
 chai.use(chaiHttp);
-const expect = chai.expect;
+chai.should();
 
-describe("Ping API Request", () => {
-  it("should return hello on call", async () => {
-    return chai
-      .request(app)
-      .get("/api/ping")
-      .then(res => {
-        chai.expect(res.text).to.eql('{"message":"pong"}');
-      });
+describe("API Request", () => {
+  describe("Ping", () => {
+    it("should return hello on call", async () => {
+      return chai
+        .request(app)
+        .get("/api/ping")
+        .then(res => {
+          chai.expect(res.body).to.eql({
+            message: "pong"
+          });
+        });
+    });
+  });
+  describe("Ping2", () => {
+    it("should return hello on call", (done) => {
+      chai.request(app)
+          .get("/api/ping")
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            done();
+          });
+    });
   });
 });
