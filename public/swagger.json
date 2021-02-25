@@ -99,6 +99,9 @@
 					"updatedAt": {
 						"type": "string",
 						"format": "date-time"
+					},
+					"message": {
+						"type": "string"
 					}
 				},
 				"required": [
@@ -109,7 +112,8 @@
 					"user",
 					"comments",
 					"createdAt",
-					"updatedAt"
+					"updatedAt",
+					"message"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -144,6 +148,9 @@
 					"updatedAt": {
 						"type": "string",
 						"format": "date-time"
+					},
+					"message": {
+						"type": "string"
 					}
 				},
 				"required": [
@@ -154,7 +161,8 @@
 					"postId",
 					"post",
 					"createdAt",
-					"updatedAt"
+					"updatedAt",
+					"message"
 				],
 				"type": "object",
 				"additionalProperties": false
